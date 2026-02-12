@@ -1,0 +1,39 @@
+/**
+ * Header / Navigation Styles
+ */
+
+.pixfort-area-content[data-area="topbar"] {
+  --pix-header-bg-color: var(--pix-transparent);
+  --pix-header-text-color: var(--pix-body-default);
+}
+
+.pixfort-area-content[data-area="header"] {
+  --pix-header-bg-color: var(--pix-transparent);
+  --pix-display-header-scroll-blur: none;
+  --pix-opacity-header-scroll-blur: 0;
+  --pix-header-scroll-bg-color: var(--pix-white);
+  --pix-header-text-color: var(--pix-body-default);
+  --pix-header-scroll-text-color: var(--pix-body-default);
+  --pix-scroll-header-shadow: var(--pix-shadow-lg);
+}
+
+.pixfort-area-content[data-area="m_topbar"] {
+  --pix-header-bg-color: var(--pix-secondary);
+  --pix-header-text-color: var(--pix-dark-opacity-5);
+}
+
+.pixfort-area-content[data-area="m_header"] {
+  --pix-header-bg-color: var(--pix-white);
+  --pix-header-text-color: var(--pix-body-default);
+  --pix-scroll-header-shadow: var(--pix-shadow-lg);
+}
+
+.pix-header .container,
+.pixfort-header-area .container {
+  --pix-header-container-width: var(--pix-container-width, 1200px);
+}
+
+:root {
+  --pix-header-height: 81px;
+  --pix-header-height-display: block;
+}

@@ -1,0 +1,237 @@
+/**
+ * Component Styles
+ * Emoji, icons, badges, buttons, cards, etc.
+ */
+
+/* Emoji styles */
+img.wp-smiley,
+img.emoji {
+  display: inline !important;
+  border: none !important;
+  box-shadow: none !important;
+  height: 1em !important;
+  width: 1em !important;
+  margin: 0 0.07em !important;
+  vertical-align: -0.1em !important;
+  background: none !important;
+  padding: 0 !important;
+}
+
+/* Image intrinsic size */
+img:is([sizes="auto" i], [sizes^="auto," i]) {
+  contain-intrinsic-size: 3000px 1500px;
+}
+
+/* Recent posts block */
+.recent-posts-block {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.recent-posts-block .pix-list-item {
+  margin-bottom: 10px;
+  width: 100%;
+  clear: both;
+}
+.recent-posts-block .pix-card {
+  position: relative;
+  max-width: 100%;
+  background-color: #212529;
+  padding: 0;
+  background-clip: border-box;
+  border: 0 solid rgba(0, 0, 0, 0.125);
+  border-radius: 5px;
+}
+.recent-posts-block .pix-card a {
+  color: #fff;
+  text-decoration: none;
+  pointer-events: none;
+}
+.recent-posts-block .pix-card .d-flex { height: auto; }
+.recent-posts-block .pix-fit-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.recent-posts-block .pix-opacity-4 { opacity: 0.4; }
+.recent-posts-block .pix-hover-opacity-6:hover { opacity: 0.6; }
+.recent-posts-block .pix-opacity-5 { opacity: 0.5; }
+.recent-posts-block .pix-opacity-7 { opacity: 0.7; }
+.recent-posts-block .pix-hover-opacity-10:hover { opacity: 1; }
+.recent-posts-block .pix-mb-10 { margin-bottom: 10px; }
+.recent-posts-block .pix-p-20 { padding: 20px; }
+.recent-posts-block .line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.recent-posts-block .rounded-xl { border-radius: 0.5rem; }
+.recent-posts-block .shadow-hover:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+.recent-posts-block .fly-sm {
+  transition: transform 0.2s ease-in-out;
+}
+.recent-posts-block .fly-sm:hover {
+  transform: translateY(-5px);
+}
+.recent-posts-block img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Promo box */
+.wp-block-pixfort-core-pix-promo-box .pix-promo-box {
+  position: relative;
+  min-height: 350px;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #212529;
+  margin: 1rem 0;
+  display: flex;
+  align-items: flex-end;
+}
+.wp-block-pixfort-core-pix-promo-box .pix-promo-box:hover svg { margin-left: 8px; }
+.wp-block-pixfort-core-pix-promo-box .pix-promo-box img {
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  opacity: 0.4;
+  transform: none;
+}
+.wp-block-pixfort-core-pix-promo-box .pix-promo-box img:hover {
+  opacity: 0.6;
+  transform: scale(1.05);
+}
+.wp-block-pixfort-core-pix-promo-box .pix-promo-box-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+.wp-block-pixfort-core-pix-promo-box .pix-promo-box-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.wp-block-pixfort-core-pix-promo-box .pix-promo-box-badge {
+  display: inline-block;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.5);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+}
+.wp-block-pixfort-core-pix-promo-box .pix-promo-box-content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.wp-block-pixfort-core-pix-promo-box .pix-promo-box-content h4 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 30px;
+  font-weight: 600;
+}
+.wp-block-pixfort-core-pix-promo-box .pix-promo-box-content a {
+  display: inline-flex;
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 1.4;
+  align-items: center;
+  box-shadow: none !important;
+}
+.wp-block-pixfort-core-pix-promo-box .pix-promo-box-content a svg {
+  width: 1em;
+  height: 1em;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Categories widget */
+.pix_categories_widget a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s;
+  border-radius: 0.375rem;
+  margin-bottom: 10px;
+  padding: 5px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: inherit;
+  min-height: 40px;
+  text-decoration: none;
+  color: #6c757d;
+}
+.pix_categories_widget a:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  color: #212529;
+}
+
+/* Social links */
+.social-links-block {
+  display: flex;
+  gap: 10px;
+}
+.social-links-block a {
+  text-decoration: none;
+  color: inherit;
+}
+.social-links-block img {
+  width: 24px;
+  height: 24px;
+}
+.wp-block-pixfort-core-social-links .pix-social_widget {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.wp-block-pixfort-core-social-links .pix-icon-preview { line-height: 0; }
+.wp-block-pixfort-core-social-links .pix-icon-preview img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.7;
+  transition: all 0.4s ease;
+}
+.wp-block-pixfort-core-social-links .pix-social-item:hover .pix-icon-preview img { opacity: 1; }
+.wp-block-pixfort-core-social-links .d-inline-block {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  transition: all 0.4s ease;
+}
+.wp-block-pixfort-core-social-links .shadow-sm {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  border-radius: 100%;
+}
+.wp-block-pixfort-core-social-links .shadow-hover-sm:hover {
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.09);
+}
+.wp-block-pixfort-core-social-links .fly-sm {
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.wp-block-pixfort-core-social-links .fly-sm:hover {
+  transform: translateY(-3px);
+}
+.wp-block-pixfort-core-social-links .pix-mr-10 { margin-right: 10px; }
+.wp-block-pixfort-core-social-links .mb-2 { margin-bottom: 0.5rem; }
+.wp-block-pixfort-core-social-links .pix-py-10 { padding-top: 10px; padding-bottom: 10px; }
+.wp-block-pixfort-core-social-links .d-flex { display: flex; }
+.wp-block-pixfort-core-social-links .align-items-center { align-items: center; }
+.wp-block-pixfort-core-social-links .justify-content-center { justify-content: center; }
+.wp-block-pixfort-core-social-links .h-100 { height: 100%; }
+.wp-block-pixfort-core-social-links .text-body-default { color: #333; }
+.wp-block-pixfort-core-social-links .bg-white { background-color: #fff; }

@@ -1,0 +1,46 @@
+/**
+ * Inline element-specific styles (from pixfort-elements-handle-inline-css)
+ */
+
+#el-2ff761ed img {
+  width: 100%;
+  height: auto;
+}
+
+.el-418e442d-1.pix-highlight-bg {
+  background-size: 0% 10%;
+}
+
+.el-418e442d-1.animated.pix-highlight-bg,
+.el-418e442d-1.highlight-grow.pix-highlight-bg {
+  background-size: 100% 10% !important;
+}
+
+#el-dbb5c97 img,
+#el-48d7ba2 img,
+#el-e85a8ad img,
+#el-41e8a21 img,
+#el-782857c4 img,
+#el-5fae579b img,
+#el-be2e5ab img,
+#el-a43dc6b img {
+  height: auto;
+}
+
+.el-977525f-0.pix-highlight-bg {
+  background-size: 0% 10%;
+}
+
+.el-977525f-0.animated.pix-highlight-bg,
+.el-977525f-0.highlight-grow.pix-highlight-bg {
+  background-size: 100% 10% !important;
+}
+
+#el-bad64c9 img {
+  height: auto;
+}
+
+#el-b8fcf35 img {
+  width: auto;
+  max-height: 35px;
+}

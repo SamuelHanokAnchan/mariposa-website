@@ -1,0 +1,37 @@
+/**
+ * Page intro / loading animation styles
+ */
+
+body:not(.render) .pix-overlay-item {
+  opacity: 0 !important;
+}
+
+body:not(.pix-loaded) .pix-wpml-header-btn {
+  opacity: 0;
+}
+
+html:not(.render) {
+  background: #ffffff !important;
+}
+
+.pix-page-loading-bg:after {
+  content: " ";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  background: #ffffff !important;
+  pointer-events: none;
+  transform-style: flat;
+  transform: scaleX(1);
+  transition: transform 0.3s cubic-bezier(0.27, 0.76, 0.38, 0.87);
+  transform-origin: right center;
+  z-index: 99999999999999999999;
+}
+
+body.render .pix-page-loading-bg:after {
+  transform: scaleX(0);
+  transform-origin: left center;
+}

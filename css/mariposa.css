@@ -1,0 +1,859 @@
+/**
+ * Mariposa — Custom Styles + React Bits-inspired Animations
+ * BlurText, ShinyText, SpotlightCard, TiltCard, ScrollReveal
+ */
+
+/* ── Font Override ────────────────────────────────── */
+body, .pix-feature-content, .pix-el-text, .text-18, .text-sm,
+label, input, select, textarea, button {
+  font-family: 'Inter', sans-serif !important;
+}
+h1, h2, h3, h4, h5, h6, .heading-font, .secondary-font, .font-weight-bold {
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* Container */
+.container { max-width: 1200px !important; }
+
+/* ── BlurText Animation (React Bits inspired) ────── */
+.blur-text-headline {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.15;
+  display: inline;
+}
+.blur-word {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(12px);
+  transform: translateY(8px);
+  animation: blurReveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--delay) * 0.1s + 0.3s);
+}
+@keyframes blurReveal {
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+/* ── ShinyText Animation (React Bits inspired) ───── */
+.shiny-text {
+  color: #3B82F6;
+  background: linear-gradient(
+    120deg,
+    #1E3A5F 0%,
+    #3B82F6 40%,
+    #93C5FD 50%,
+    #3B82F6 60%,
+    #1E3A5F 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: blurReveal 0.6s cubic-bezier(0.22,1,0.36,1) forwards, shinySlide 3s ease-in-out 1.5s infinite;
+}
+@keyframes shinySlide {
+  0% { background-position: 100% 50%; }
+  50% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* ── Hero CTA centering ────────────────────────────── */
+#hero .elementor-widget-pix-button {
+  width: 100% !important;
+  display: block !important;
+  text-align: center !important;
+}
+#hero .elementor-widget-pix-button > .elementor-widget-container {
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* ── Hero Buttons ──────────────────────────────────── */
+#hero .btn-primary {
+  background: linear-gradient(135deg, #3B82F6 0%, #2563EB 50%, #60A5FA 100%) !important;
+  background-size: 200% 100% !important;
+  border: none !important;
+  color: #fff !important;
+  border-radius: 12px;
+  padding: 14px 32px;
+  font-size: 1rem;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUpEl 0.7s cubic-bezier(0.22,1,0.36,1) forwards, shinyBtnSlide 3s ease-in-out 2.5s infinite;
+  animation-delay: 1.8s, 2.5s;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+@keyframes shinyBtnSlide {
+  0% { background-position: 100% 50%; }
+  50% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+#hero .btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.3) 45%,
+    rgba(255, 255, 255, 0.1) 55%,
+    transparent 70%
+  );
+  transform: skewX(-20deg);
+  animation: shinyGlare 3s ease-in-out 2.5s infinite;
+  pointer-events: none;
+}
+@keyframes shinyGlare {
+  0% { left: -60%; }
+  50% { left: 120%; }
+  100% { left: 120%; }
+}
+#hero .btn-primary:hover {
+  box-shadow: 0 8px 28px rgba(59, 130, 246, 0.4) !important;
+  transform: translateY(-2px);
+}
+#hero .btn-outline-secondary {
+  background: transparent !important;
+  border: none !important;
+  color: #3B82F6 !important;
+  border-radius: 12px;
+  padding: 14px 32px;
+  font-size: 1rem;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+#hero .btn-outline-secondary:hover {
+  background: rgba(59, 130, 246, 0.08) !important;
+  color: #2563EB !important;
+  transform: translateY(-1px);
+}
+#hero .btn-outline-secondary svg {
+  color: #3B82F6 !important;
+}
+
+/* ── Fade In Up (hero elements) ──────────────────── */
+.fade-in-up-el {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUpEl 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes fadeInUpEl {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Scroll Reveal ───────────────────────────────── */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0s);
+}
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Strip Elementor "card" styling from spotlight wrappers ── */
+#how-it-works .elementor-widget-wrap.elementor-element-populated,
+#mockups .elementor-widget-wrap.elementor-element-populated {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+/* ── SpotlightCard (React Bits inspired) ─────────── */
+.spotlight-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.5s ease;
+}
+.spotlight-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(59, 130, 246, 0.15);
+  border-color: #93C5FD;
+}
+.spotlight-gradient {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  background: radial-gradient(
+    300px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(59, 130, 246, 0.08),
+    transparent 60%
+  );
+  z-index: 2;
+}
+.spotlight-card:hover .spotlight-gradient {
+  opacity: 1;
+}
+/* ── Card Video ─────────────────────────────────── */
+.card-video-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
+  overflow: hidden;
+}
+.card-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.card-video-placeholder {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #94A3B8;
+  font-size: 13px;
+  font-weight: 500;
+  background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 50%, #F1F5F9 100%);
+  background-size: 200% 200%;
+  animation: placeholderShimmer 3s ease infinite;
+}
+@keyframes placeholderShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.card-video-wrap.video-loaded .card-video-placeholder {
+  display: none;
+}
+.spotlight-card-content {
+  position: relative;
+  z-index: 3;
+  padding: 28px 24px 32px;
+}
+
+/* ── TiltCard (React Bits inspired) ──────────────── */
+.tilt-card {
+  perspective: 1000px;
+}
+.tilt-card-inner {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px 28px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.tilt-card:hover .tilt-card-inner {
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+.tilt-card-shine {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(
+    300px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(59, 130, 246, 0.06),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.tilt-card:hover .tilt-card-shine {
+  opacity: 1;
+}
+
+/* ── Step Number ─────────────────────────────────── */
+.mariposa-step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #EFF6FF;
+  color: #3B82F6;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── Idea Section ────────────────────────────────── */
+#the-idea {
+  position: relative;
+}
+#the-idea::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+.mariposa-idea-para {
+  position: relative;
+  z-index: 1;
+  font-size: 1.1rem;
+  line-height: 1.85;
+  color: #475569;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+/* ── FadeWords Animation (React Bits inspired) ──── */
+.fade-words .fade-word {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(6px);
+  transform: translateY(8px);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--fw-i, 0) * 0.03s);
+}
+.fade-words-visible .fade-word {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+/* ── Scroll-Stack (ReactBits inspired) ──────────── */
+.scroll-stack {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-bottom: 40vh;
+}
+.scroll-stack__item {
+  position: sticky;
+  top: 120px;
+  transform-origin: center top;
+  will-change: transform;
+}
+.scroll-stack__item:nth-child(2) { top: 140px; }
+.scroll-stack__item:nth-child(3) { top: 160px; }
+
+/* ── Impact Cards (split layout) ─────────────────── */
+.impact-card {
+  display: flex;
+  flex-direction: row;
+  border-radius: 24px;
+  background: #fff;
+  overflow: hidden;
+  margin-bottom: 24px;
+  min-height: 320px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+.impact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12);
+}
+/* Left: text area (40%) */
+.impact-card-text {
+  flex: 0 0 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px 40px;
+  /* slide-from-left animation */
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.impact-card.impact-revealed .impact-card-text {
+  opacity: 1;
+  transform: translateX(0);
+}
+/* Right: image area (60%) */
+.impact-card-icon {
+  flex: 0 0 60%;
+  overflow: hidden;
+  margin: 0;
+  border-radius: 0;
+}
+.impact-card-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.impact-card:hover .impact-card-icon img {
+  transform: scale(1.04);
+}
+/* Title */
+.impact-card-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: #0F172A;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+/* BlurText animation for impact card titles */
+.impact-card-title .blur-word {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(10px);
+  animation: blurReveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-play-state: paused;
+}
+.impact-card.impact-revealed .impact-card-title .blur-word {
+  animation-play-state: running;
+}
+/* Text items with staggered slide-in */
+.impact-card-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.impact-card-items span {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #475569;
+  line-height: 1.6;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.impact-card.impact-revealed .impact-card-items span {
+  opacity: 1;
+  transform: translateX(0);
+}
+/* Mobile: stack vertically */
+@media (max-width: 768px) {
+  .impact-card {
+    flex-direction: column-reverse;
+    min-height: auto;
+  }
+  .impact-card-text {
+    flex: none;
+    padding: 32px 28px;
+  }
+  .impact-card-icon {
+    flex: none;
+    height: 220px;
+  }
+}
+
+/* ── CircularGallery (ReactBits inspired) ─────────── */
+.circular-gallery {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 55px 0 60px;
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.circular-gallery:active {
+  cursor: grabbing;
+}
+.circular-gallery__scene {
+  perspective: 1200px;
+  width: 100%;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.circular-gallery__track {
+  position: relative;
+  width: 240px;
+  height: 320px;
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.circular-gallery__item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 320px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  border: 1px solid #E2E8F0;
+  overflow: hidden;
+  backface-visibility: hidden;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.circular-gallery__item:hover {
+  box-shadow: 0 16px 48px rgba(59, 130, 246, 0.15);
+  border-color: #93C5FD;
+}
+/* Image: 85% top, full width */
+.circular-gallery__img {
+  width: 100%;
+  flex: 0 0 85%;
+  min-height: 0;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 50%, #F1F5F9 100%);
+  background-size: 200% 200%;
+  animation: placeholderShimmer 3s ease infinite;
+}
+/* Label: 15% bottom */
+.circular-gallery__label {
+  flex: 0 0 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0F172A;
+  text-align: center;
+  padding: 0 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 768px) {
+  .circular-gallery__scene {
+    height: 320px;
+  }
+  .circular-gallery__track,
+  .circular-gallery__item {
+    width: 200px;
+    height: 280px;
+  }
+}
+
+/* ── Partner Logos ────────────────────────────────── */
+.mariposa-partner-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 0px 40px 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.mariposa-partner-logo {
+  height: 40px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+/* Individual size adjustments for logos with different native sizes */
+.mariposa-partner-logo[alt="LIHH"],
+.mariposa-partner-logo[alt="REH"] {
+  height: 62px;
+  max-width: 300px;
+}
+.mariposa-partner-logo[alt="CosyBio"] {
+  height: 66px;
+  max-width: 110px;
+}
+@media (max-width: 768px) {
+  .mariposa-partner-logos {
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .mariposa-partner-logo {
+    height: 30px;
+    max-width: 90px;
+  }
+}
+
+/* ── Form Inputs ─────────────────────────────────── */
+.mariposa-input {
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 12px 16px;
+  width: 100%;
+  font-size: 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.mariposa-input:focus {
+  outline: none;
+  border-color: #3B82F6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
+}
+
+/* ── Waitlist Card ──────────────────────────────────── */
+.waitlist-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 48px 40px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
+  border: 1px solid #E2E8F0;
+}
+.waitlist-icon {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+@media (max-width: 480px) {
+  .waitlist-card {
+    padding: 32px 24px;
+    border-radius: 16px;
+  }
+}
+
+/* ── Shiny Button (reusable) ────────────────────────── */
+.mariposa-shiny-btn {
+  background: linear-gradient(135deg, #3B82F6 0%, #2563EB 50%, #60A5FA 100%);
+  background-size: 200% 100%;
+  border: none;
+  color: #fff;
+  border-radius: 12px;
+  padding: 16px 32px;
+  font-size: 1.05rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  animation: shinyBtnSlide 3s ease-in-out 1s infinite;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.mariposa-shiny-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.3) 45%,
+    rgba(255, 255, 255, 0.1) 55%,
+    transparent 70%
+  );
+  transform: skewX(-20deg);
+  animation: shinyGlare 3s ease-in-out 1s infinite;
+  pointer-events: none;
+}
+.mariposa-shiny-btn:hover {
+  box-shadow: 0 8px 28px rgba(59, 130, 246, 0.4);
+  transform: translateY(-2px);
+}
+
+/* ── Language Dropdown ───────────────────────────────── */
+.mariposa-lang-dropdown {
+  position: relative;
+}
+.mariposa-lang-toggle {
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+  cursor: pointer;
+  text-decoration: none !important;
+  font-size: 13px;
+}
+.mariposa-lang-toggle:hover {
+  background: #F1F5F9;
+}
+.mariposa-lang-flag {
+  width: 20px;
+  height: 15px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.mariposa-lang-flag svg {
+  width: 20px;
+  height: 15px;
+  display: block;
+}
+.mariposa-lang-menu {
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  min-width: 160px !important;
+  padding: 6px !important;
+  padding-top: 10px !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08) !important;
+  background: #fff !important;
+  margin-top: 0 !important;
+}
+/* Invisible bridge so mouse can travel from toggle to menu */
+.mariposa-lang-dropdown .mariposa-lang-menu::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+}
+.mariposa-lang-item {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155 !important;
+  text-decoration: none !important;
+  transition: background 0.15s ease;
+}
+.mariposa-lang-item:hover {
+  background: #F1F5F9 !important;
+  color: #1E3A5F !important;
+}
+.mariposa-lang-item.active {
+  background: #EFF6FF !important;
+  color: #3B82F6 !important;
+}
+
+/* ── Typewriter Text ────────────────────────────────── */
+.mariposa-typetext {
+  display: inline-block;
+  border-right: 2px solid #3B82F6;
+  animation: typeCursor 0.7s step-end infinite;
+}
+.mariposa-typetext.done {
+  border-right-color: transparent;
+  animation: none;
+}
+@keyframes typeCursor {
+  0%, 100% { border-right-color: #3B82F6; }
+  50% { border-right-color: transparent; }
+}
+
+/* ── Nav Link Hover Underline ───────────────────────── */
+.pix-nav-link .pix-dropdown-title {
+  position: relative;
+}
+.pix-nav-link .pix-dropdown-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3B82F6, #93C5FD);
+  border-radius: 1px;
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.pix-nav-link:hover .pix-dropdown-title::after {
+  width: 100%;
+}
+
+/* ── Threads Background ─────────────────────────────── */
+#threads-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.12;
+}
+#threads-bg canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* ── Rotated Side Text ──────────────────────────────── */
+.mariposa-side-text {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) rotate(-90deg) !important;
+  white-space: nowrap;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #94A3B8;
+  pointer-events: none;
+  opacity: 1 !important;
+  filter: none !important;
+}
+@media (max-width: 991px) {
+  .mariposa-side-text-col {
+    display: none !important;
+  }
+}
+
+/* ── Problem Section: Swap columns (numbers left, text right) ── */
+#problem > .elementor-container {
+  display: flex !important;
+  flex-wrap: wrap;
+}
+#problem .elementor-element-4bb3b4e0 { order: 1; } /* stats / numbers — left */
+#problem .elementor-element-71f396b3 { order: 2; } /* challenge text — middle */
+#problem .elementor-element-268a6890 { order: 3; } /* side text — right */
+
+/* ── Section Blur Transitions ──────────────────────────────── */
+.elementor-top-section {
+  position: relative;
+}
+.elementor-top-section::before,
+.elementor-top-section::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 2;
+  pointer-events: none;
+}
+.elementor-top-section::before {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(248, 250, 252, 0.95) 0%, rgba(248, 250, 252, 0) 100%);
+}
+.elementor-top-section::after {
+  bottom: 0;
+  background: linear-gradient(to top, rgba(248, 250, 252, 0.95) 0%, rgba(248, 250, 252, 0) 100%);
+}
+/* Don't blur the hero top (first section) */
+#hero::before {
+  display: none;
+}
+
+/* ── "broken bridge" highlight color → teal ────────────────── */
+.el-418e442d-1.pix-highlight-bg {
+  background-image: linear-gradient(to right, #4aafb6 0%, #4aafb6 100%) !important;
+  background-repeat: no-repeat !important;
+  background-position: left bottom !important;
+}
