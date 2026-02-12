@@ -851,6 +851,138 @@ h1, h2, h3, h4, h5, h6, .heading-font, .secondary-font, .font-weight-bold {
   display: none;
 }
 
+/* ── Team Section ──────────────────────────────────────────── */
+#team {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.team-grid--advisors {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 780px;
+}
+.team-card {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.4s ease;
+  position: relative;
+}
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 48px rgba(59, 130, 246, 0.14);
+  border-color: #93C5FD;
+}
+.team-card__img-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 50%, #F1F5F9 100%);
+  background-size: 200% 200%;
+  animation: placeholderShimmer 3s ease infinite;
+}
+.team-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.team-card:hover .team-card__img {
+  transform: scale(1.05);
+}
+/* Malte: nudge image upward */
+.team-card__img[alt="Malte Borggrewe"] {
+  object-position: center 20%;
+}
+.team-card__info {
+  padding: 20px 20px 24px;
+  text-align: center;
+}
+.team-card__name {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 4px;
+}
+.team-card__role {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #3B82F6;
+  margin: 0 0 6px;
+}
+.team-card__location {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  color: #94A3B8;
+  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.team-card__linkedin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #EFF6FF;
+  color: #3B82F6;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+.team-card__linkedin:hover {
+  background: #3B82F6;
+  color: #fff;
+  transform: translateY(-2px);
+}
+.team-divider {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, #3B82F6, #93C5FD);
+  margin: 64px auto;
+  border-radius: 1px;
+}
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .team-grid--advisors {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .team-card__info {
+    padding: 16px 14px 20px;
+  }
+  .team-card__name {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 480px) {
+  .team-grid,
+  .team-grid--advisors {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+}
+
 /* ── "broken bridge" highlight color → teal ────────────────── */
 .el-418e442d-1.pix-highlight-bg {
   background-image: linear-gradient(to right, #4aafb6 0%, #4aafb6 100%) !important;
